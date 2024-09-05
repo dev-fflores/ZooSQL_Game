@@ -1,4 +1,4 @@
-﻿
+﻿using DG.Tweening;
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,26 +19,26 @@ namespace Menu
         {
             _playButton.onClick.AddListener(() =>
             {
-                menuMediator.OnPlayButtonPressed();
+                menuMediator.OnPlayButtonClicked();
             });
             _selectLevelButton.onClick.AddListener(() =>
             {
-                menuMediator.OnSelectLevelPressed();
+                menuMediator.OnSelectLevelClicked();
             });
             _exitButton.onClick.AddListener(() =>
             {
-                menuMediator.OnExitButtonPressed();
+                menuMediator.OnExitButtonClicked();
             });
         }
 
         public override void Show()
         {
-            throw new System.NotImplementedException();
+            base.Show();
         }
 
         public override void Hide()
         {
-            
+            base.Hide();
         }
     }
 }

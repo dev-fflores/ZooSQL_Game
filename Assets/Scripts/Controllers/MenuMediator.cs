@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DG.Tweening;
 using System.Collections.Generic;
 using Menu;
 using UnityEngine;
@@ -12,6 +12,7 @@ namespace Controllers
 
         [SerializeField] private MenuPanel _mainMenuPanel;
         [SerializeField] private MenuPanel _selectLevelPanel;
+        [SerializeField] private MenuPanel _moreLevelPanel;
 
         private void Awake()
         {
@@ -28,27 +29,44 @@ namespace Controllers
 
         private void Start()
         {
+            DOTween.Init();
+            
+            _panelStack.Push(_mainMenuPanel);
+            
+            _mainMenuPanel.Show();
+            _selectLevelPanel.Hide();
+            
             _mainMenuPanel.Configure(this);
             _selectLevelPanel.Configure(this);
+            _moreLevelPanel.Configure(this);
         }
 
-        public void OnPlayButtonPressed()
+        public void OnPlayButtonClicked()
         {
             Debug.Log("A jugar!");
             
             
         }
 
-        public void OnSelectLevelPressed()
+        public void OnSelectLevelClicked()
         {
-            Debug.Log("Selecciona nivel!");
-            
             ShowPanel(_selectLevelPanel);
+            Debug.Log("Selecciona nivel!");
         }
 
-        public void OnExitButtonPressed()
+        public void OnExitButtonClicked()
         {
             Debug.Log("Salió!");
+        }
+
+        public void OnBackButtonClicked()
+        {
+            BackPanel();
+        }
+        
+        public void OnMoreLevelButtonClicked()
+        {
+            ShowPanel(_moreLevelPanel);
         }
 
         public void ShowPanel(MenuPanel menuPanel)
@@ -65,12 +83,13 @@ namespace Controllers
         public void BackPanel()
         {
             if (_panelStack.Count <= 0) return;
-            
+        
             _panelStack.Pop().Hide();
             if (_panelStack.Count > 0)
             {
                 _panelStack.Peek().Show();
             }
         }
+
     }
 }

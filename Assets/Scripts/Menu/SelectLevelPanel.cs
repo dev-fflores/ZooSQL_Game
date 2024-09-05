@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DG.Tweening;
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +7,7 @@ namespace Menu
 {
     public class SelectLevelPanel : MenuPanel
     {
+        [SerializeField] private Button _moreLevelButton; 
         [SerializeField] private Button _backButton; 
         public override void Configure(MenuMediator pMenuMediator)
         {
@@ -17,18 +18,22 @@ namespace Menu
         {
             _backButton.onClick.AddListener(() =>
             {
-                menuMediator.BackPanel();
+                menuMediator.OnBackButtonClicked();
+            });
+            _moreLevelButton.onClick.AddListener(() =>
+            {
+                menuMediator.OnMoreLevelButtonClicked();
             });
         }
 
         public override void Show()
         {
-            throw new System.NotImplementedException();
+            base.Show();
         }
 
         public override void Hide()
         {
-            throw new System.NotImplementedException();
+            base.Hide();
         }
     }
 }

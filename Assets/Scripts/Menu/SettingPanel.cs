@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Menu
@@ -11,12 +12,16 @@ namespace Menu
         }
         public override void Show()
         {
-            throw new System.NotImplementedException();
+            _canvasGroup.DOFade(1, 0.5f);
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
         }
 
         public override void Hide()
         {
-            throw new System.NotImplementedException();
+            _canvasGroup.DOFade(0, 0.5f);
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
     }
 }
