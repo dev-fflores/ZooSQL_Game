@@ -35,11 +35,20 @@ namespace Controllers
         public void OnPlayButtonPressed()
         {
             Debug.Log("A jugar!");
+            
+            
         }
 
         public void OnSelectLevelPressed()
         {
             Debug.Log("Selecciona nivel!");
+            
+            ShowPanel(_selectLevelPanel);
+        }
+
+        public void OnExitButtonPressed()
+        {
+            Debug.Log("Salió!");
         }
 
         public void ShowPanel(MenuPanel menuPanel)

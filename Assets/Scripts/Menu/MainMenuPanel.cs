@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +25,10 @@ namespace Menu
             {
                 menuMediator.OnSelectLevelPressed();
             });
+            _exitButton.onClick.AddListener(() =>
+            {
+                menuMediator.OnExitButtonPressed();
+            });
         }
 
         public override void Show()
@@ -34,7 +38,7 @@ namespace Menu
 
         public override void Hide()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
