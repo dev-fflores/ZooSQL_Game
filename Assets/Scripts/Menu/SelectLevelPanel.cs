@@ -7,8 +7,8 @@ namespace Menu
 {
     public class SelectLevelPanel : MenuPanel
     {
-        [SerializeField] private Button _moreLevelButton; 
-        [SerializeField] private Button _backButton; 
+        [SerializeField] public Button _moreLevelButton; 
+        [SerializeField] public Button _backButton; 
         public override void Configure(MenuMediator pMenuMediator)
         {
             base.menuMediator = pMenuMediator;

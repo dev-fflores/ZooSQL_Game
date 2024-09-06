@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections;
+using DG.Tweening;
 using System.Collections.Generic;
 using Menu;
 using UnityEngine;
@@ -10,9 +11,9 @@ namespace Controllers
         public static MenuMediator Instance { get; private set; }
         private Stack<MenuPanel> _panelStack = new Stack<MenuPanel>();
 
-        [SerializeField] private MenuPanel _mainMenuPanel;
-        [SerializeField] private MenuPanel _selectLevelPanel;
-        [SerializeField] private MenuPanel _moreLevelPanel;
+        [SerializeField] private MainMenuPanel _mainMenuPanel;
+        [SerializeField] private SelectLevelPanel _selectLevelPanel;
+        [SerializeField] private MoreLevelPanel _moreLevelPanel;
 
         private void Awake()
         {
@@ -76,19 +77,56 @@ namespace Controllers
                 _panelStack.Peek().Hide();
             }
             
+            StartCoroutine(ShowPanelCoroutine(menuPanel));
+        }
+        
+        private IEnumerator ShowPanelCoroutine(MenuPanel menuPanel)
+        {
+            DisableButtons();
+            yield return new WaitForSeconds(_panelStack.Count > 0 ? _panelStack.Peek().AnimationOutDuration : 0);
             _panelStack.Push(menuPanel);
             menuPanel.Show();
+            EnableButtons();
         }
 
         public void BackPanel()
         {
             if (_panelStack.Count <= 0) return;
         
-            _panelStack.Pop().Hide();
+            StartCoroutine(BackPanelCoroutine());
+        }
+        
+        private IEnumerator BackPanelCoroutine()
+        {
+            DisableButtons();
+            var currentPanel = _panelStack.Pop();
+            currentPanel.Hide();
+            yield return new WaitForSeconds(currentPanel.AnimationOutDuration);
             if (_panelStack.Count > 0)
             {
                 _panelStack.Peek().Show();
             }
+            EnableButtons();
+        }
+        
+        private void DisableButtons()
+        {
+            _mainMenuPanel._playButton.interactable = false;
+            _mainMenuPanel._selectLevelButton.interactable = false;
+            _mainMenuPanel._exitButton.interactable = false;
+            _selectLevelPanel._backButton.interactable = false;
+            _selectLevelPanel._moreLevelButton.interactable = false;
+            _moreLevelPanel._backButton.interactable = false;
+        }
+
+        private void EnableButtons()
+        {
+            _mainMenuPanel._playButton.interactable = true;
+            _mainMenuPanel._selectLevelButton.interactable = true;
+            _mainMenuPanel._exitButton.interactable = true;
+            _selectLevelPanel._backButton.interactable = true;
+            _selectLevelPanel._moreLevelButton.interactable = true;
+            _moreLevelPanel._backButton.interactable = true;
         }
 
     }

@@ -776,7 +776,7 @@ MonoBehaviour:
   _animationInDuration: 0.5
   _animationOutDuration: 0.5
   directionIn: 2
-  directionOut: 3
+  directionOut: 2
   _backButton: {fileID: 179441997}
 --- !u!224 &543881741
 RectTransform:
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   _animationInDuration: 0.5
   _animationOutDuration: 0.5
   directionIn: 0
-  directionOut: 1
+  directionOut: 0
   _moreLevelButton: {fileID: 1733174203}
   _backButton: {fileID: 348887197}
 --- !u!1 &959885346
@@ -2476,10 +2476,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 1066349178}
-  _animationInType: 0
-  _animationOutType: 0
-  _animationInDuration: 0
-  _animationOutDuration: 0
+  _animationInType: 2
+  _animationOutType: 2
+  _animationInDuration: 0.5
+  _animationOutDuration: 0.5
   directionIn: 0
   directionOut: 0
   _playButton: {fileID: 485848365}

@@ -7,9 +7,9 @@ namespace Menu
 {
     public class MainMenuPanel : MenuPanel
     {
-        [SerializeField] private Button _playButton;
-        [SerializeField] private Button _selectLevelButton;
-        [SerializeField] private Button _exitButton;
+        [SerializeField] public Button _playButton;
+        [SerializeField] public Button _selectLevelButton;
+        [SerializeField] public Button _exitButton;
         public override void Configure(MenuMediator pMenuMediator)
         {
             base.menuMediator = pMenuMediator;

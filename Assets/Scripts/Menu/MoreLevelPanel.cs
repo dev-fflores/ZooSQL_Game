@@ -7,7 +7,7 @@ namespace Menu
 {
     public class MoreLevelPanel : MenuPanel
     {
-        [SerializeField] private Button _backButton;
+        [SerializeField] public Button _backButton;
         
         public override void Configure(MenuMediator pMenuMediator)
         {

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Controllers;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Menu
 {
@@ -40,6 +42,10 @@ namespace Menu
     public abstract class MenuPanel : MonoBehaviour
     {
         protected MenuMediator menuMediator;
+        
+        // public List<Button> buttons = new List<Button>();
+        public float AnimationOutDuration => _animationOutDuration;
+        
         [SerializeField] protected CanvasGroup _canvasGroup;
         [SerializeField] protected AnimationInType _animationInType;
         [SerializeField] protected AnimationOutType _animationOutType;
