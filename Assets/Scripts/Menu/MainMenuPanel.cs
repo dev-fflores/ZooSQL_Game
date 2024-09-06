@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,14 @@ namespace Menu
 
         private void Awake()
         {
+            // Agregar los botones, que se van a declarando, en la lista _buttons
+            _buttons = new List<Button>
+            {
+                _playButton,
+                _selectLevelButton,
+                _exitButton
+            };
+            
             _playButton.onClick.AddListener(() =>
             {
                 menuMediator.OnPlayButtonClicked();

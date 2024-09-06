@@ -43,7 +43,8 @@ namespace Menu
     {
         protected MenuMediator menuMediator;
         
-        // public List<Button> buttons = new List<Button>();
+        protected List<Button> _buttons = new List<Button>();
+        public List<Button> Buttons => _buttons;
         public float AnimationOutDuration => _animationOutDuration;
         
         [SerializeField] protected CanvasGroup _canvasGroup;

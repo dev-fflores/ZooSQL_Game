@@ -111,22 +111,24 @@ namespace Controllers
         
         private void DisableButtons()
         {
-            _mainMenuPanel._playButton.interactable = false;
-            _mainMenuPanel._selectLevelButton.interactable = false;
-            _mainMenuPanel._exitButton.interactable = false;
-            _selectLevelPanel._backButton.interactable = false;
-            _selectLevelPanel._moreLevelButton.interactable = false;
-            _moreLevelPanel._backButton.interactable = false;
+            foreach (var menuPanel in _panelStack)
+            {
+                foreach (var button in menuPanel.Buttons)
+                {
+                    button.interactable = false;
+                }
+            }
         }
 
         private void EnableButtons()
         {
-            _mainMenuPanel._playButton.interactable = true;
-            _mainMenuPanel._selectLevelButton.interactable = true;
-            _mainMenuPanel._exitButton.interactable = true;
-            _selectLevelPanel._backButton.interactable = true;
-            _selectLevelPanel._moreLevelButton.interactable = true;
-            _moreLevelPanel._backButton.interactable = true;
+            foreach (var menuPanel in _panelStack)
+            {
+                foreach (var button in menuPanel.Buttons)
+                {
+                    button.interactable = true;
+                }
+            }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,12 @@ namespace Menu
 
         private void Awake()
         {
+            _buttons = new List<Button>
+            {
+                _moreLevelButton,
+                _backButton
+            };
+            
             _backButton.onClick.AddListener(() =>
             {
                 menuMediator.OnBackButtonClicked();
