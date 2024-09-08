@@ -30,6 +30,7 @@ namespace Menu
         None,
         FadeIn,
         SlideIn,
+        ScaleIn,
     }
 
     public enum AnimationOutType
@@ -37,6 +38,7 @@ namespace Menu
         None,
         FadeOut,
         SlideOut,
+        ScaleOut,
     }
     
     public abstract class MenuPanel : MonoBehaviour
@@ -108,6 +110,10 @@ namespace Menu
                             throw new ArgumentOutOfRangeException();
                     }
                     break;
+                case AnimationInType.ScaleIn:
+                    transform.localScale = Vector3.zero;
+                    transform.DOScale(Vector3.one, _animationInDuration);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -141,6 +147,9 @@ namespace Menu
                             rectTransform.DOAnchorPosY(-Screen.height, _animationOutDuration);
                             break;
                     }
+                    break;
+                case AnimationOutType.ScaleOut:
+                    transform.DOScale(Vector3.zero, _animationOutDuration);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -2281,8 +2281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 1066349178}
-  _animationInType: 2
-  _animationOutType: 2
+  _animationInType: 3
+  _animationOutType: 3
   _animationInDuration: 0.25
   _animationOutDuration: 0.25
   directionIn: 0
@@ -2445,7 +2445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &282342799561296431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3187,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1633781908626814338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,7 +4584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5995779593682019779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4598,8 +4598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 2905925850990633618}
-  _animationInType: 2
-  _animationOutType: 2
+  _animationInType: 3
+  _animationOutType: 3
   _animationInDuration: 0.25
   _animationOutDuration: 0.25
   directionIn: 0
@@ -4739,8 +4739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 8684836556702853694}
-  _animationInType: 2
-  _animationOutType: 2
+  _animationInType: 3
+  _animationOutType: 3
   _animationInDuration: 0.25
   _animationOutDuration: 0.25
   directionIn: 0
@@ -5057,10 +5057,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 0}
-  _animationInType: 0
-  _animationOutType: 0
-  _animationInDuration: 0
-  _animationOutDuration: 0
+  _animationInType: 3
+  _animationOutType: 3
+  _animationInDuration: 0.25
+  _animationOutDuration: 0.25
   directionIn: 0
   directionOut: 0
   _easyButton: {fileID: 1188978336048536958}

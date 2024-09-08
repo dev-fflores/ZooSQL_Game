@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using Menu;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Controllers
@@ -12,7 +13,6 @@ namespace Controllers
         public static MenuMediator Instance { get; private set; }
         private Stack<MenuPanel> _panelStack = new Stack<MenuPanel>();
         
-        // TODO: Crear un diccionario para almacenar los paneles y poder acceder a ellos por su nombre
 
         [SerializeField] private MenuPanel _mainMenuPanel;
         [SerializeField] private MenuPanel _optionsMenuPanel;
@@ -107,17 +107,17 @@ namespace Controllers
 
         public void OnEasyButtonClicked()
         {
-            throw new System.NotImplementedException();
+            SceneManager.LoadScene("IntroScene");
         }
 
         public void OnMediumButtonClicked()
         {
-            throw new System.NotImplementedException();
+            SceneManager.LoadScene("IntroScene");
         }
 
         public void OnHardButtonClicked()
         {
-            throw new System.NotImplementedException();
+            SceneManager.LoadScene("IntroScene");
         }
 
         #region ShowAndHidePanels
