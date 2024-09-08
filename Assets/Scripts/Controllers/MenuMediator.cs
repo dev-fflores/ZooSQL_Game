@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using Menu;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Controllers
 {
@@ -12,7 +13,8 @@ namespace Controllers
         private Stack<MenuPanel> _panelStack = new Stack<MenuPanel>();
 
         [SerializeField] private MainMenuPanel _mainMenuPanel;
-        [SerializeField] private SelectLevelPanel _selectLevelPanel;
+        [SerializeField] private OptionsMenuPanel _optionsMenuPanel;
+        [SerializeField] private SelectGamePanel _selectGamePanel;
         [SerializeField] private MoreLevelPanel _moreLevelPanel;
 
         private void Awake()
@@ -35,23 +37,26 @@ namespace Controllers
             _panelStack.Push(_mainMenuPanel);
             
             _mainMenuPanel.Show();
-            _selectLevelPanel.Hide();
+            _optionsMenuPanel.Hide();
+            _selectGamePanel.Hide();
+            _moreLevelPanel.Hide();
             
             _mainMenuPanel.Configure(this);
-            _selectLevelPanel.Configure(this);
+            _optionsMenuPanel.Configure(this);
+            _selectGamePanel.Configure(this);
             _moreLevelPanel.Configure(this);
         }
 
         public void OnPlayButtonClicked()
         {
             Debug.Log("A jugar!");
-            
+            ShowPanel(_selectGamePanel);
             
         }
 
         public void OnSelectLevelClicked()
         {
-            ShowPanel(_selectLevelPanel);
+            ShowPanel(_optionsMenuPanel);
             Debug.Log("Selecciona nivel!");
         }
 
@@ -59,7 +64,17 @@ namespace Controllers
         {
             Debug.Log("Salió!");
         }
+        
+        public void OnQuizGameButtonClicked()
+        {
+            throw new System.NotImplementedException();
+        }
 
+        public void OnCardsGameButtonClicked()
+        {
+            throw new System.NotImplementedException();
+        }
+        
         public void OnBackButtonClicked()
         {
             BackPanel();

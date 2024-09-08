@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Menu
 {
-    public class SelectLevelPanel : MenuPanel
+    public class OptionsMenuPanel : MenuPanel
     {
         [SerializeField] public Button _moreLevelButton; 
         [SerializeField] public Button _backButton; 

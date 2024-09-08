@@ -61,6 +61,19 @@ namespace Menu
             this.menuMediator = pMenuMediator;
         }
 
+        private void Awake()
+        {
+            // _buttons = new List<Button>(GetComponentsInChildren<Button>());
+            // _buttons.ForEach(button =>
+            // {
+            //     button.onClick.AddListener(() =>
+            //     {
+            //         menuMediator.OnButtonClicked(button);
+            //     });
+            // });
+            
+        }
+
         public virtual void Show()
         {
             switch (_animationInType)
@@ -69,7 +82,7 @@ namespace Menu
                     break;
                 case AnimationInType.FadeIn:
                     _canvasGroup.alpha = 0;
-                    _canvasGroup.DOFade(1, 0.5f);
+                    _canvasGroup.DOFade(1, _animationInDuration);
                     break;
                 case AnimationInType.SlideIn:
                     rectTransform = GetComponent<RectTransform>();
@@ -77,19 +90,19 @@ namespace Menu
                     {
                         case DirectionIn.Left:
                             rectTransform.anchoredPosition = new Vector2(-Screen.width, 0);
-                            rectTransform.DOAnchorPosX(0, 0.5f);
+                            rectTransform.DOAnchorPosX(0, _animationInDuration);
                             break;
                         case DirectionIn.Right:
                             rectTransform.anchoredPosition = new Vector2(Screen.width, 0);
-                            rectTransform.DOAnchorPosX(0, 0.5f);
+                            rectTransform.DOAnchorPosX(0, _animationInDuration);
                             break;
                         case DirectionIn.Up:
                             rectTransform.anchoredPosition = new Vector2(0, Screen.height);
-                            rectTransform.DOAnchorPosY(0, 0.5f);
+                            rectTransform.DOAnchorPosY(0, _animationInDuration);
                             break;
                         case DirectionIn.Down:
                             rectTransform.anchoredPosition = new Vector2(0, -Screen.height);
-                            rectTransform.DOAnchorPosY(0, 0.5f);
+                            rectTransform.DOAnchorPosY(0, _animationInDuration);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
