@@ -11,11 +11,15 @@ namespace Controllers
     {
         public static MenuMediator Instance { get; private set; }
         private Stack<MenuPanel> _panelStack = new Stack<MenuPanel>();
+        
+        // TODO: Crear un diccionario para almacenar los paneles y poder acceder a ellos por su nombre
 
-        [SerializeField] private MainMenuPanel _mainMenuPanel;
-        [SerializeField] private OptionsMenuPanel _optionsMenuPanel;
-        [SerializeField] private SelectGamePanel _selectGamePanel;
-        [SerializeField] private MoreLevelPanel _moreLevelPanel;
+        [SerializeField] private MenuPanel _mainMenuPanel;
+        [SerializeField] private MenuPanel _optionsMenuPanel;
+        [SerializeField] private MenuPanel _selectGamePanel;
+        [SerializeField] private MenuPanel _selectTopicPanel;
+        [SerializeField] private MenuPanel _selectDifficultyPanel;
+        [SerializeField] private MenuPanel _moreLevelPanel;
 
         private void Awake()
         {
@@ -39,11 +43,16 @@ namespace Controllers
             _mainMenuPanel.Show();
             _optionsMenuPanel.Hide();
             _selectGamePanel.Hide();
+            _selectTopicPanel.Hide();
+            _selectDifficultyPanel.Hide();
             _moreLevelPanel.Hide();
+            
             
             _mainMenuPanel.Configure(this);
             _optionsMenuPanel.Configure(this);
             _selectGamePanel.Configure(this);
+            _selectTopicPanel.Configure(this);
+            _selectDifficultyPanel.Configure(this);
             _moreLevelPanel.Configure(this);
         }
 
@@ -67,12 +76,12 @@ namespace Controllers
         
         public void OnQuizGameButtonClicked()
         {
-            throw new System.NotImplementedException();
+            ShowPanel(_selectTopicPanel);
         }
 
         public void OnCardsGameButtonClicked()
         {
-            throw new System.NotImplementedException();
+            ShowPanel(_selectTopicPanel);
         }
         
         public void OnBackButtonClicked()
@@ -84,6 +93,34 @@ namespace Controllers
         {
             ShowPanel(_moreLevelPanel);
         }
+        
+
+        public void OnAlgebraTopicButtonClicked()
+        {
+            ShowPanel(_selectDifficultyPanel);
+        }
+
+        public void OnPlsqlTopicButtonClicked()
+        {
+            ShowPanel(_selectDifficultyPanel);
+        }
+
+        public void OnEasyButtonClicked()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnMediumButtonClicked()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnHardButtonClicked()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        #region ShowAndHidePanels
 
         public void ShowPanel(MenuPanel menuPanel)
         {
@@ -123,7 +160,10 @@ namespace Controllers
             }
             EnableButtons();
         }
-        
+
+        #endregion
+
+        #region EnableAndDisableButtons
         private void DisableButtons()
         {
             foreach (var menuPanel in _panelStack)
@@ -146,5 +186,6 @@ namespace Controllers
             }
         }
 
+        #endregion
     }
 }
