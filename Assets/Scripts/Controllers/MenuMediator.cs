@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using System.Collections.Generic;
+using Data;
 using Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +11,11 @@ namespace Controllers
 {
     public class MenuMediator : MonoBehaviour
     {
-        public static MenuMediator Instance { get; private set; }
         private Stack<MenuPanel> _panelStack = new Stack<MenuPanel>();
         
-
+        private ConfigData _configData;
+        
+        [Header("Menu Panels")]
         [SerializeField] private MenuPanel _mainMenuPanel;
         [SerializeField] private MenuPanel _optionsMenuPanel;
         [SerializeField] private MenuPanel _selectGamePanel;
@@ -23,20 +25,14 @@ namespace Controllers
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            
         }
 
         private void Start()
         {
             DOTween.Init();
+            
+            _configData = DataManager.Instance.LoadConfigData();
             
             _panelStack.Push(_mainMenuPanel);
             
@@ -77,11 +73,15 @@ namespace Controllers
         public void OnQuizGameButtonClicked()
         {
             ShowPanel(_selectTopicPanel);
+            _configData.currentGameType = GameType.QuizGame.ToString();
+            Debug.Log($"currentGameType: {_configData.currentGameType}");
         }
 
         public void OnCardsGameButtonClicked()
         {
             ShowPanel(_selectTopicPanel);
+            _configData.currentGameType = GameType.CardsGame.ToString();
+            Debug.Log($"currentGameType: {_configData.currentGameType}");
         }
         
         public void OnBackButtonClicked()
@@ -94,31 +94,79 @@ namespace Controllers
             ShowPanel(_moreLevelPanel);
         }
         
-
-        public void OnAlgebraTopicButtonClicked()
+        public void OnTopicButtonClicked(GameTopic gameTopic)
         {
+            switch (gameTopic)
+            {
+                case GameTopic.Algebra:
+                    _configData.currentTopic = GameTopic.Algebra.ToString();
+                    break;
+                case GameTopic.PlSql:
+                    _configData.currentTopic = GameTopic.PlSql.ToString();
+                    break;
+                default:
+                    _configData.currentTopic = GameTopic.None.ToString();
+                    break;
+            }
+            Debug.Log($"currentTopic: {_configData.currentTopic}");
             ShowPanel(_selectDifficultyPanel);
         }
-
-        public void OnPlsqlTopicButtonClicked()
+        
+        public void OnDifficultyButtonClicked(GameDifficulty gameDifficulty)
         {
-            ShowPanel(_selectDifficultyPanel);
+            switch (gameDifficulty)
+            {
+                case GameDifficulty.Easy:
+                    _configData.currentDifficulty = (int)GameDifficulty.Easy;
+                    break;
+                case GameDifficulty.Medium:
+                    _configData.currentDifficulty = (int)GameDifficulty.Medium;
+                    break;
+                case GameDifficulty.Hard:
+                    _configData.currentDifficulty = (int)GameDifficulty.Hard;
+                    break;
+                default:
+                    _configData.currentDifficulty = (int)GameDifficulty.None;
+                    break;
+            }
+            _selectDifficultyPanel.Hide();
+            DataManager.Instance.SaveConfigData(_configData);
+            Debug.Log($"currentDifficulty: {_configData.currentDifficulty}");
+            
+            StartCoroutine(LoadSceneAfter("IntroScene", _selectDifficultyPanel.AnimationOutDuration));
+        }
+        
+        private IEnumerator LoadSceneAfter(string sceneName, float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            DOTween.KillAll();
+            SceneManager.LoadScene(sceneName);
         }
 
-        public void OnEasyButtonClicked()
-        {
-            SceneManager.LoadScene("IntroScene");
-        }
-
-        public void OnMediumButtonClicked()
-        {
-            SceneManager.LoadScene("IntroScene");
-        }
-
-        public void OnHardButtonClicked()
-        {
-            SceneManager.LoadScene("IntroScene");
-        }
+        // public void OnEasyButtonClicked()
+        // {
+        //     _configData.currentDifficulty = (int)GameDifficulty.Easy;
+        //     DataManager.Instance.SaveConfigData(_configData);
+        //     Debug.Log($"currentDifficulty: {_configData.currentDifficulty}");
+        //     SceneManager.LoadScene("IntroScene");
+        // }
+        //
+        // public void OnMediumButtonClicked()
+        // {
+        //     _configData.currentDifficulty = (int)GameDifficulty.Medium;
+        //     DataManager.Instance.SaveConfigData(_configData);
+        //     Debug.Log($"currentDifficulty: {_configData.currentDifficulty}");
+        //     Debug.Log(_configData);
+        //     SceneManager.LoadScene("IntroScene");
+        // }
+        //
+        // public void OnHardButtonClicked()
+        // {
+        //     _configData.currentDifficulty = (int)GameDifficulty.Hard;
+        //     DataManager.Instance.SaveConfigData(_configData);
+        //     Debug.Log($"currentDifficulty: {_configData.currentDifficulty}");
+        //     SceneManager.LoadScene("IntroScene");
+        // }
 
         #region ShowAndHidePanels
 

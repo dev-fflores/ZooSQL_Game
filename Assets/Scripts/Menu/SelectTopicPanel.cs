@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Controllers;
+using Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,12 +28,12 @@ namespace Menu
             
             _algebraTopicButton.onClick.AddListener(() =>
             {
-                menuMediator.OnAlgebraTopicButtonClicked();
+                menuMediator.OnTopicButtonClicked(GameTopic.Algebra);
             });
             
             _plsqlTopicButton.onClick.AddListener(() =>
             {
-                menuMediator.OnPlsqlTopicButtonClicked();
+                menuMediator.OnTopicButtonClicked(GameTopic.PlSql);
             });
             
             _backButton.onClick.AddListener(() =>

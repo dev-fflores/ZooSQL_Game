@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Controllers;
+using Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,17 +30,17 @@ namespace Menu
             
             _easyButton.onClick.AddListener(() =>
             {
-                menuMediator.OnEasyButtonClicked();
+                menuMediator.OnDifficultyButtonClicked(GameDifficulty.Easy);
             });
             
             _mediumButton.onClick.AddListener(() =>
             {
-                menuMediator.OnMediumButtonClicked();
+                menuMediator.OnDifficultyButtonClicked(GameDifficulty.Medium);
             });
             
             _hardButton.onClick.AddListener(() =>
             {
-                menuMediator.OnHardButtonClicked();
+                menuMediator.OnDifficultyButtonClicked(GameDifficulty.Hard);
             });
             
             _backButton.onClick.AddListener(() =>
