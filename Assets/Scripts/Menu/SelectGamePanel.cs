@@ -15,17 +15,18 @@ namespace Menu
         public override void Configure(MenuMediator pMenuMediator)
         {
             base.menuMediator = pMenuMediator;
-        }
-
-        private void Start()
-        {
-            _buttons = new List<Button>
+            
+            _buttons = new List<Selectable>
             {
                 _quizGameButton,
                 _cardsGameButton,
                 _backButton
             };
-            
+
+        }
+
+        private void Start()
+        {
             _quizGameButton.onClick.AddListener(() =>
             {
                 menuMediator.OnQuizGameButtonClicked();

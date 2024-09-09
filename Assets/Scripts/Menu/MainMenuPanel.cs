@@ -19,7 +19,7 @@ namespace Menu
         private void Awake()
         {
             // Agregar los botones, que se van a declarando, en la lista _buttons
-            _buttons = new List<Button>
+            _buttons = new List<Selectable>
             {
                 _playButton,
                 _selectLevelButton,

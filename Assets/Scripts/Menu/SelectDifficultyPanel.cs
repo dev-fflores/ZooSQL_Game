@@ -16,17 +16,18 @@ namespace Menu
         public override void Configure(MenuMediator pMenuMediator)
         {
             base.menuMediator = pMenuMediator;
-        }
-        
-        private void Start()
-        {
-            _buttons = new List<Button>()
+            
+            _buttons = new List<Selectable>()
             {
                 _easyButton,
                 _mediumButton,
                 _hardButton,
                 _backButton
             };
+        }
+        
+        private void Start()
+        {
             
             _easyButton.onClick.AddListener(() =>
             {

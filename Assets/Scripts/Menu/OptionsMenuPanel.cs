@@ -8,28 +8,35 @@ namespace Menu
 {
     public class OptionsMenuPanel : MenuPanel
     {
-        [SerializeField] public Button _moreLevelButton; 
-        [SerializeField] public Button _backButton; 
+        [SerializeField] private Toggle _musicToggle; 
+        [SerializeField] private Toggle _soundToggle; 
+        [SerializeField] private Button _backButton; 
         public override void Configure(MenuMediator pMenuMediator)
         {
             base.menuMediator = pMenuMediator;
+            
+            _buttons = new List<Selectable>
+            {
+                _musicToggle,
+                _soundToggle,
+                _backButton
+            };
         }
 
         private void Awake()
         {
-            _buttons = new List<Button>
-            {
-                _moreLevelButton,
-                _backButton
-            };
             
             _backButton.onClick.AddListener(() =>
             {
                 menuMediator.OnBackButtonClicked();
             });
-            _moreLevelButton.onClick.AddListener(() =>
+            _musicToggle.onValueChanged.AddListener((value) =>
             {
-                menuMediator.OnMoreLevelButtonClicked();
+                menuMediator.OnMusicToggleChanged(value);
+            });
+            _soundToggle.onValueChanged.AddListener((value) =>
+            {
+                menuMediator.OnSoundToggleChanged(value);
             });
         }
 

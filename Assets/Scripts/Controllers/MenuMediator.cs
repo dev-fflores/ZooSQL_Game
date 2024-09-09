@@ -6,6 +6,7 @@ using Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Controllers
 {
@@ -34,6 +35,7 @@ namespace Controllers
             
             _configData = DataManager.Instance.LoadConfigData();
             
+            
             _panelStack.Push(_mainMenuPanel);
             
             _mainMenuPanel.Show();
@@ -50,6 +52,10 @@ namespace Controllers
             _selectTopicPanel.Configure(this);
             _selectDifficultyPanel.Configure(this);
             _moreLevelPanel.Configure(this);
+            
+            
+            _optionsMenuPanel.Buttons[0].GetComponent<Toggle>().isOn = _configData.isMusicOn;
+            _optionsMenuPanel.Buttons[1].GetComponent<Toggle>().isOn = _configData.isSoundOn;
         }
 
         public void OnPlayButtonClicked()
@@ -89,9 +95,16 @@ namespace Controllers
             BackPanel();
         }
         
-        public void OnMoreLevelButtonClicked()
+        
+        public void OnMusicToggleChanged(bool value)
         {
-            ShowPanel(_moreLevelPanel);
+            _configData.isMusicOn = value;
+            Debug.Log($"isMusicOn: {_configData.isMusicOn}");
+        }
+        public void OnSoundToggleChanged(bool value)
+        {
+            _configData.isSoundOn = value;
+            Debug.Log($"isSoundOn: {_configData.isSoundOn}");
         }
         
         public void OnTopicButtonClicked(GameTopic gameTopic)
@@ -235,5 +248,6 @@ namespace Controllers
         }
 
         #endregion
+
     }
 }
