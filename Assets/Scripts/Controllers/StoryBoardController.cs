@@ -5,6 +5,8 @@ using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using Menu;
 using UnityEngine.Serialization;
 
 namespace Controllers
@@ -16,17 +18,33 @@ namespace Controllers
         [SerializeField] private int _currentPageIndex;
         [SerializeField] private CartoonPage _currentPage;
         
+        [SerializeField] private AnimationInType _animationInType;
+        [SerializeField] private AnimationOutType _animationOutType;
+        [SerializeField] private float _animationDuration;
+        private bool _isInTransition;
+        
         [SerializeField] private ConfigData _configData;
         
         private void Start()
         {
+            DOTween.Init();
+            _isInTransition = true;
             _configData = DataManager.Instance.LoadConfigData();
-            InitializeCartoons();
+            SetupCartoonPages();
             _currentPageIndex = 0;
             _currentPage = _cartoonPages[_currentPageIndex];
+            
+            _canvasGroup.alpha = 0;
+            var sequence = DOTween.Sequence();
+            sequence.Append(_canvasGroup.DOFade(1, _animationDuration)).AppendCallback(() =>
+            {
+                _isInTransition = false;
+                Debug.Log("IsInTransition: " + _isInTransition);
+            });
+            sequence.Play();
         }
 
-        private void InitializeCartoons()
+        private void SetupCartoonPages()
         {
             foreach (var cartoonPage in _cartoonPages)
             {
@@ -35,8 +53,53 @@ namespace Controllers
             _cartoonPages[0].gameObject.SetActive(true);
         }
         
+        private IEnumerator CanvasFadeIn()
+        {
+            _isInTransition = true;
+            _canvasGroup.alpha = 0;
+            // DisableInteractableButtons();
+            _canvasGroup.DOFade(1, _animationDuration);
+            yield return new WaitForSeconds(_animationDuration);
+            _isInTransition = false;
+            // EnableInteractableButtons();
+        }
+        
+        private IEnumerator CanvasFadeOut()
+        {
+            _isInTransition = true;
+            _canvasGroup.alpha = 1;
+            // DisableInteractableButtons();
+            _canvasGroup.DOFade(0, _animationDuration);
+            yield return new WaitForSeconds(_animationDuration);
+            _isInTransition = false;
+        }
+        
+        private void DisableInteractableButtons()
+        {
+            foreach (var cartoonPage in _cartoonPages)
+            {
+                cartoonPage.GetComponent<CanvasGroup>().interactable = false;
+                cartoonPage.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+        }
+        
+        private void EnableInteractableButtons()
+        {
+            foreach (var cartoonPage in _cartoonPages)
+            {
+                cartoonPage.GetComponent<CanvasGroup>().interactable = true;
+                cartoonPage.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
+        }
+        
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (_isInTransition)
+            {
+                return;
+            }
+            Debug.Log("OnPointerClick");
+            
             var currentPage = GetCurrentCartoonPage();
             
             if (currentPage.IsDialogueFinished)
