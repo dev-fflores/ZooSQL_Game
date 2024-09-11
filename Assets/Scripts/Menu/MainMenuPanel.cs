@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +8,9 @@ namespace Menu
 {
     public class MainMenuPanel : MenuPanel
     {
-        [SerializeField] private Button _playButton;
-        [SerializeField] private Button _selectLevelButton;
-        [SerializeField] private Button _exitButton;
+        [SerializeField] public Button _playButton;
+        [SerializeField] public Button _selectLevelButton;
+        [SerializeField] public Button _exitButton;
         public override void Configure(MenuMediator pMenuMediator)
         {
             base.menuMediator = pMenuMediator;
@@ -17,24 +18,36 @@ namespace Menu
 
         private void Awake()
         {
+            // Agregar los botones, que se van a declarando, en la lista _buttons
+            _buttons = new List<Selectable>
+            {
+                _playButton,
+                _selectLevelButton,
+                _exitButton
+            };
+            
             _playButton.onClick.AddListener(() =>
             {
-                menuMediator.OnPlayButtonPressed();
+                menuMediator.OnPlayButtonClicked();
             });
             _selectLevelButton.onClick.AddListener(() =>
             {
-                menuMediator.OnSelectLevelPressed();
+                menuMediator.OnSelectLevelClicked();
+            });
+            _exitButton.onClick.AddListener(() =>
+            {
+                menuMediator.OnExitButtonClicked();
             });
         }
 
         public override void Show()
         {
-            throw new System.NotImplementedException();
+            base.Show();
         }
 
         public override void Hide()
         {
-            throw new System.NotImplementedException();
+            base.Hide();
         }
     }
 }
