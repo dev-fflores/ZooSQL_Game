@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,9 +16,10 @@ namespace Cartoon
         [TextArea(3, 10)]
         public List<string> _dialogues;
         [SerializeField] private TextMeshProUGUI _dialogueText;
-        // [SerializeField] private float _dialogueSpeed = 0.1f;
+        [SerializeField] private float _dialogueSpeed = 0.1f;
         public string currentDialogueText;
         public bool IsDialogueFinished { get; private set; }
+        public bool IsPartialDialogueFinished { get; private set; }
         // public CartoonPageState CurrentCartoonPageState { get; private set; }
         public int CurrentDialogueIndex { get; set; }
 
@@ -29,21 +31,24 @@ namespace Cartoon
         private void Start()
         {
             IsDialogueFinished = false;
+            IsPartialDialogueFinished = false;
             CurrentDialogueIndex = 0;
             _dialogueText.text = string.Empty;
             currentDialogueText = _dialogues[CurrentDialogueIndex];
             
-            WritePartialDialogue();
+            WritePartialDialogueWithAnimation();
             // CurrentCartoonPageState = CartoonPageState.Start;
             // StartWriteDialogueWithAnimation(_dialogues[CurrentDialogueIndex]);
         }
 
-        public void WritePartialDialogue()
+        public void CompleteWritePartialDialogue()
         {
             if (IsDialogueFinished)
             {
                 return;
             }
+            
+            StopAllCoroutines();
             
             if (CurrentDialogueIndex > 0)
             {
@@ -52,7 +57,40 @@ namespace Cartoon
             
             _dialogueText.text += _dialogues[CurrentDialogueIndex];
             CurrentDialogueIndex++;
+            IsPartialDialogueFinished = true;
 
+            if (CurrentDialogueIndex >= _dialogues.Count)
+            {
+                IsDialogueFinished = true;
+            }
+        }
+        
+        public void WritePartialDialogueWithAnimation()
+        {
+            StartCoroutine(WritePartialDialogueAnimation());
+        }
+        
+        private IEnumerator WritePartialDialogueAnimation()
+        {
+            IsPartialDialogueFinished = false;
+            if (IsDialogueFinished)
+            {
+                yield break;
+            }
+            
+            if (CurrentDialogueIndex > 0)
+            {
+                _dialogueText.text += "\n";
+            }
+            
+            foreach (var letter in _dialogues[CurrentDialogueIndex])
+            {
+                _dialogueText.text += letter;
+                yield return new WaitForSeconds(_dialogueSpeed);
+            }
+            CurrentDialogueIndex++;
+            IsPartialDialogueFinished = true;
+            
             if (CurrentDialogueIndex >= _dialogues.Count)
             {
                 IsDialogueFinished = true;

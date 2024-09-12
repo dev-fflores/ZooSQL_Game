@@ -885,6 +885,7 @@ MonoBehaviour:
   - Esto es un dialogo de ejemplo
   - Mero otro dialogo para probar
   _dialogueText: {fileID: 0}
+  _dialogueSpeed: 0.05
   currentDialogueText: 
 --- !u!1 &1127015637
 GameObject:
@@ -1206,6 +1207,7 @@ MonoBehaviour:
   - when an unknown printer took a galley of type and scrambled it to make a type
     specimen book. It has survived not only five centuries
   _dialogueText: {fileID: 0}
+  _dialogueSpeed: 0.05
   currentDialogueText: 
 --- !u!114 &1951916239
 MonoBehaviour:

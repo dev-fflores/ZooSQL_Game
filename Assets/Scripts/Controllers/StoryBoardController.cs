@@ -98,9 +98,16 @@ namespace Controllers
             {
                 return;
             }
+            
             Debug.Log("OnPointerClick");
             
             var currentPage = GetCurrentCartoonPage();
+
+            if (!currentPage.IsPartialDialogueFinished && !currentPage.IsDialogueFinished)
+            {
+                currentPage.CompleteWritePartialDialogue();
+                return;
+            }
             
             if (currentPage.IsDialogueFinished)
             {
@@ -144,7 +151,7 @@ namespace Controllers
                 });
                 sequence.Play();
             }
-            currentPage.WritePartialDialogue();
+            currentPage.WritePartialDialogueWithAnimation();
         }
         
         public CartoonPage GetCurrentCartoonPage()
