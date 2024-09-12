@@ -99,8 +99,6 @@ namespace Controllers
                 return;
             }
             
-            Debug.Log("OnPointerClick");
-            
             var currentPage = GetCurrentCartoonPage();
 
             if (!currentPage.IsPartialDialogueFinished && !currentPage.IsDialogueFinished)
@@ -135,9 +133,6 @@ namespace Controllers
                         }
                     }
                 });
-                
-                // _cartoonPages[_currentPageIndex].gameObject.SetActive(false);
-                // _currentPageIndex++;
 
                 _isInTransition = true;
                 sequence.AppendCallback(() =>

@@ -20,7 +20,6 @@ namespace Cartoon
         public string currentDialogueText;
         public bool IsDialogueFinished { get; private set; }
         public bool IsPartialDialogueFinished { get; private set; }
-        // public CartoonPageState CurrentCartoonPageState { get; private set; }
         public int CurrentDialogueIndex { get; set; }
 
         private void Awake()
@@ -34,11 +33,9 @@ namespace Cartoon
             IsPartialDialogueFinished = false;
             CurrentDialogueIndex = 0;
             _dialogueText.text = string.Empty;
-            currentDialogueText = _dialogues[CurrentDialogueIndex];
+            currentDialogueText = string.Empty;
             
             WritePartialDialogueWithAnimation();
-            // CurrentCartoonPageState = CartoonPageState.Start;
-            // StartWriteDialogueWithAnimation(_dialogues[CurrentDialogueIndex]);
         }
 
         public void CompleteWritePartialDialogue()
@@ -52,10 +49,11 @@ namespace Cartoon
             
             if (CurrentDialogueIndex > 0)
             {
-                _dialogueText.text += "\n";
+                currentDialogueText += "\n";
+                Debug.Log("Salto de linea " + currentDialogueText);
             }
-            
-            _dialogueText.text += _dialogues[CurrentDialogueIndex];
+            currentDialogueText += _dialogues[CurrentDialogueIndex];
+            _dialogueText.text = currentDialogueText;
             CurrentDialogueIndex++;
             IsPartialDialogueFinished = true;
 
