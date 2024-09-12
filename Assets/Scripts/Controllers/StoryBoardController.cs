@@ -111,40 +111,38 @@ namespace Controllers
                 {
                     _cartoonPages[_currentPageIndex].gameObject.SetActive(false);
                     _currentPageIndex++;
+                    if (_currentPageIndex >= _cartoonPages.Count)
+                    {
+                        DOTween.KillAll();
+                        Debug.Log("All dialogues are finished");
+                        // TODO: Add a method to finish the story
+                        // Ir a la siguiente escena
+                        var gameType = _configData.currentGameType;
+
+                        if (gameType == GameType.CardsGame.ToString())
+                        {
+                            SceneManager.LoadScene("CardsGameScene");
+                        }else if (gameType == GameType.QuizGame.ToString())
+                        {
+                            SceneManager.LoadScene("QuizGameScene");
+                        }
+                    }
                 });
                 
                 // _cartoonPages[_currentPageIndex].gameObject.SetActive(false);
                 // _currentPageIndex++;
 
-                if (_currentPageIndex >= _cartoonPages.Count)
+                _isInTransition = true;
+                sequence.AppendCallback(() =>
                 {
-                    Debug.Log("All dialogues are finished");
-                    // TODO: Add a method to finish the story
-                    // Ir a la siguiente escena
-                    var gameType = _configData.currentGameType;
-
-                    if (gameType == GameType.CardsGame.ToString())
-                    {
-                        SceneManager.LoadScene("CardsGameScene");
-                    }else if (gameType == GameType.QuizGame.ToString())
-                    {
-                        SceneManager.LoadScene("QuizGameScene");
-                    }
-                }
-                else
+                    _canvasGroup.alpha = 0;
+                    _cartoonPages[_currentPageIndex].gameObject.SetActive(true);
+                });
+                sequence.Append(_canvasGroup.DOFade(1, _animationDuration)).AppendCallback(() =>
                 {
-                    _isInTransition = true;
-                    sequence.AppendCallback(() =>
-                    {
-                        _cartoonPages[_currentPageIndex].gameObject.SetActive(true);
-                        _canvasGroup.alpha = 0;
-                    });
-                    sequence.Append(_canvasGroup.DOFade(1, _animationDuration)).OnComplete(() =>
-                    {
-                        _isInTransition = false;
-                    });
-                    sequence.Play();
-                }
+                    _isInTransition = false;
+                });
+                sequence.Play();
             }
             currentPage.WritePartialDialogue();
         }

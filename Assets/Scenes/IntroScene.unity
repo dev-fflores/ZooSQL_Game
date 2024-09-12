@@ -573,7 +573,7 @@ MonoBehaviour:
   _currentPage: {fileID: 0}
   _animationInType: 0
   _animationOutType: 0
-  _animationDuration: 1
+  _animationDuration: 0.5
   _configData:
     currentLevel: 0
     currentGameType: 
