@@ -104,8 +104,17 @@ namespace Controllers
             
             if (currentPage.IsDialogueFinished)
             {
-                _cartoonPages[_currentPageIndex].gameObject.SetActive(false);
-                _currentPageIndex++;
+                _isInTransition = true;
+                
+                var sequence = DOTween.Sequence();
+                sequence.Append(_canvasGroup.DOFade(0, _animationDuration)).AppendCallback(() =>
+                {
+                    _cartoonPages[_currentPageIndex].gameObject.SetActive(false);
+                    _currentPageIndex++;
+                });
+                
+                // _cartoonPages[_currentPageIndex].gameObject.SetActive(false);
+                // _currentPageIndex++;
 
                 if (_currentPageIndex >= _cartoonPages.Count)
                 {
@@ -124,7 +133,17 @@ namespace Controllers
                 }
                 else
                 {
-                    _cartoonPages[_currentPageIndex].gameObject.SetActive(true);
+                    _isInTransition = true;
+                    sequence.AppendCallback(() =>
+                    {
+                        _cartoonPages[_currentPageIndex].gameObject.SetActive(true);
+                        _canvasGroup.alpha = 0;
+                    });
+                    sequence.Append(_canvasGroup.DOFade(1, _animationDuration)).OnComplete(() =>
+                    {
+                        _isInTransition = false;
+                    });
+                    sequence.Play();
                 }
             }
             currentPage.WritePartialDialogue();
