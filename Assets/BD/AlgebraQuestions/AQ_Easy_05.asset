@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
   m_Name: AQ_Easy_05
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
+  questionImage: {fileID: 21300000, guid: 8befc2e6712338b4998878efd66da3ef, type: 3}
   questionText: "Manny necesita saber los nombres de todos los cuidadores en el zool\xF3gico
     para tener precauci\xF3n con ellos. \xBFQu\xE9 consulta deber\xEDa usar?"
   answers:
@@ -24,6 +24,4 @@ MonoBehaviour:
     isCorrect: 1
   - answerText: "\u03C3_nombre (Animales)"
     isCorrect: 0
-  questionTopic: 2
-  questionDifficulty: 1
   questionType: 9

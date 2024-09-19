@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
   m_Name: AQ_Easy_03
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
+  questionImage: {fileID: 21300000, guid: 4ab1539330b707a4bb42d746adaea1c0, type: 3}
   questionText: "Manny quiere encontrar a todos los animales que tienen m\xE1s de
     10 a\xF1os, ya que estos saben m\xE1s del zool\xF3gico que los menores. \xBFQu\xE9
     consulta deber\xEDa usar?"
@@ -25,6 +25,4 @@ MonoBehaviour:
     isCorrect: 1
   - answerText: "\u03C3_edad>10 (Visitantes)"
     isCorrect: 0
-  questionTopic: 2
-  questionDifficulty: 1
   questionType: 8

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
   m_Name: AQ_Easy_02
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
+  questionImage: {fileID: 21300000, guid: 058a86e39deaa1d4bb90a1e1b8cb5a1f, type: 3}
   questionText: "Manny necesita encontrar todos los animales que son mam\xEDferos,
     ya si Perry va a preguntarle a los reptiles se lo pueden comer. \xBFQu\xE9 consulta
     deber\xEDa usar?"
@@ -25,6 +25,4 @@ MonoBehaviour:
     isCorrect: 0
   - answerText: "\u03C3_tipo='Mam\xEDfero' (Animales)"
     isCorrect: 1
-  questionTopic: 2
-  questionDifficulty: 1
   questionType: 8

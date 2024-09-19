@@ -17,8 +17,6 @@ namespace Quiz
         [TextArea(3, 10)]
         public string questionText;
         public Answer[] answers;
-        public QuestionTopic questionTopic;
-        public QuestionDifficulty questionDifficulty;
         public QuestionType questionType;
     }
 }
