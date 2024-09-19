@@ -134,7 +134,7 @@ namespace Controllers
                     }
                 });
 
-                _isInTransition = true;
+                // _isInTransition = true;
                 sequence.AppendCallback(() =>
                 {
                     _canvasGroup.alpha = 0;

@@ -31,17 +31,17 @@ namespace Menu
             
             _easyButton.onClick.AddListener(() =>
             {
-                menuMediator.OnDifficultyButtonClicked(GameDifficulty.Easy);
+                menuMediator.OnDifficultyButtonClicked(QuestionDifficulty.Easy);
             });
             
             _mediumButton.onClick.AddListener(() =>
             {
-                menuMediator.OnDifficultyButtonClicked(GameDifficulty.Medium);
+                menuMediator.OnDifficultyButtonClicked(QuestionDifficulty.Medium);
             });
             
             _hardButton.onClick.AddListener(() =>
             {
-                menuMediator.OnDifficultyButtonClicked(GameDifficulty.Hard);
+                menuMediator.OnDifficultyButtonClicked(QuestionDifficulty.Hard);
             });
             
             _backButton.onClick.AddListener(() =>

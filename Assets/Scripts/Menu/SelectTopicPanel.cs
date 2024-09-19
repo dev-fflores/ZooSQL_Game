@@ -29,12 +29,12 @@ namespace Menu
             
             _algebraTopicButton.onClick.AddListener(() =>
             {
-                menuMediator.OnTopicButtonClicked(GameTopic.Algebra);
+                menuMediator.OnTopicButtonClicked(QuestionTopic.Algebra);
             });
             
             _plsqlTopicButton.onClick.AddListener(() =>
             {
-                menuMediator.OnTopicButtonClicked(GameTopic.PlSql);
+                menuMediator.OnTopicButtonClicked(QuestionTopic.PlSql);
             });
             
             _backButton.onClick.AddListener(() =>

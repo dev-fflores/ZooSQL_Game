@@ -107,39 +107,39 @@ namespace Controllers
             Debug.Log($"isSoundOn: {_configData.isSoundOn}");
         }
         
-        public void OnTopicButtonClicked(GameTopic gameTopic)
+        public void OnTopicButtonClicked(QuestionTopic questionTopic)
         {
-            switch (gameTopic)
+            switch (questionTopic)
             {
-                case GameTopic.Algebra:
-                    _configData.currentTopic = GameTopic.Algebra.ToString();
+                case QuestionTopic.Algebra:
+                    _configData.currentTopic = QuestionTopic.Algebra.ToString();
                     break;
-                case GameTopic.PlSql:
-                    _configData.currentTopic = GameTopic.PlSql.ToString();
+                case QuestionTopic.PlSql:
+                    _configData.currentTopic = QuestionTopic.PlSql.ToString();
                     break;
                 default:
-                    _configData.currentTopic = GameTopic.None.ToString();
+                    _configData.currentTopic = QuestionTopic.None.ToString();
                     break;
             }
             Debug.Log($"currentTopic: {_configData.currentTopic}");
             ShowPanel(_selectDifficultyPanel);
         }
         
-        public void OnDifficultyButtonClicked(GameDifficulty gameDifficulty)
+        public void OnDifficultyButtonClicked(QuestionDifficulty questionDifficulty)
         {
-            switch (gameDifficulty)
+            switch (questionDifficulty)
             {
-                case GameDifficulty.Easy:
-                    _configData.currentDifficulty = (int)GameDifficulty.Easy;
+                case QuestionDifficulty.Easy:
+                    _configData.currentDifficulty = (int)QuestionDifficulty.Easy;
                     break;
-                case GameDifficulty.Medium:
-                    _configData.currentDifficulty = (int)GameDifficulty.Medium;
+                case QuestionDifficulty.Medium:
+                    _configData.currentDifficulty = (int)QuestionDifficulty.Medium;
                     break;
-                case GameDifficulty.Hard:
-                    _configData.currentDifficulty = (int)GameDifficulty.Hard;
+                case QuestionDifficulty.Hard:
+                    _configData.currentDifficulty = (int)QuestionDifficulty.Hard;
                     break;
                 default:
-                    _configData.currentDifficulty = (int)GameDifficulty.None;
+                    _configData.currentDifficulty = (int)QuestionDifficulty.None;
                     break;
             }
             _selectDifficultyPanel.Hide();

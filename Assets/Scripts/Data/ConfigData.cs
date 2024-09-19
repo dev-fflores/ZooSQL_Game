@@ -10,7 +10,7 @@ namespace Data
         QuizGame
     }
     [System.Serializable]
-    public enum GameDifficulty
+    public enum QuestionDifficulty
     {
         None,
         Easy,
@@ -19,11 +19,22 @@ namespace Data
     }
     
     [System.Serializable]
-    public enum GameTopic
+    public enum QuestionTopic
     {
         None,
         PlSql,
         Algebra
+    }
+
+    [System.Serializable]
+    public enum QuestionType
+    {
+        
+        //PlSQL
+        TiposDatosDeclaraciones, OperacionManipulacionDatos, ControlFlujoBucles,ManejoExcepciones,FuncionesOperadores,TiposDatosColecciones,EstructuraManejoDatos,FuncionesProcedimientos,
+
+        //Algebra
+        Seleccion, Proyeccion,SeleccionCondicion,ProyeccionCondicion,Union,Diferencia,Interseccion, JoinNatural,UnionCodicion,JoinNaturalCondicion,AgregacionAgrupamiento,AgregacionCondicion,Agregacion
     }
     
     [System.Serializable]

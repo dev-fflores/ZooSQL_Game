@@ -46,6 +46,7 @@ namespace Cartoon
             }
             
             StopAllCoroutines();
+            Debug.Log("StopAllCoroutines");
             
             if (CurrentDialogueIndex > 0)
             {
