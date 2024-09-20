@@ -13,6 +13,7 @@ namespace Controllers
         [SerializeField] private List<QuestionBankSO> _algebraQuestions;
         public Dictionary<int, QuestionBankSO> _algebraQuestionsDictionary;
         
+        [Header("Questions Components")]
         public QuestionSO[] questionsToShow;
         [SerializeField] private int _currentQuestionIndex;
         private int _currentQuestionBankIndex;
@@ -34,7 +35,6 @@ namespace Controllers
         private void Start()
         {
             questionsToShow = GetQuestionFromBank(_algebraQuestions[_currentQuestionBankIndex]);
-            
 
             LoadQuestionInUI(questionsToShow[_currentQuestionIndex]);
         }
@@ -76,6 +76,14 @@ namespace Controllers
             if (isCorrect)
             {
                 _currentQuestionIndex++;
+
+                if (_currentQuestionIndex >= questionsToShow.Length)
+                {
+                    _currentQuestionBankIndex++;
+                    questionsToShow = GetQuestionFromBank(_algebraQuestions[_currentQuestionBankIndex]);
+                    _currentQuestionIndex = 0;
+                }
+                
                 LoadQuestionInUI(questionsToShow[_currentQuestionIndex]);
             }
             else
