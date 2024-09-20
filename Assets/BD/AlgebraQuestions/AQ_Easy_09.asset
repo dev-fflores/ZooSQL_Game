@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
+  m_Name: AQ_Easy_09
+  m_EditorClassIdentifier: 
+  questionImage: {fileID: 21300000, guid: e947d49a6532eb842bb87c05a66d4c53, type: 3}
+  questionText: "Manny necesita encontrar los animales que est\xE1n en la zona 'A'
+    y pesan menos de 200 kg. \xBFQu\xE9 consulta deber\xEDa usar?"
+  answers:
+  - answerText: "\u03C3_zona='A' \u2227 peso<200 (Animales)"
+    isCorrect: 1
+  - answerText: "\u03C0_nombre (\u03C3_zona='A' \u2227 peso<200 (Animales))"
+    isCorrect: 0
+  - answerText: "\u03C3_zona='A' (Animales) \u2229 \u03C3_peso<200 (Animales)"
+    isCorrect: 0
+  - answerText: "\u03C3_zona='A' \u2227 \u03C3_peso<200 (Animales)"
+    isCorrect: 0
+  questionTopic: 2
+  questionDifficulty: 1
+  questionType: 10

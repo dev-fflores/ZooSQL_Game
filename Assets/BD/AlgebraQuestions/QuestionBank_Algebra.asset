@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be7fc99d2ca4d82a13d661cd2617bcc, type: 3}
+  m_Name: QuestionBank_Algebra
+  m_EditorClassIdentifier: 
+  questions:
+  - {fileID: 11400000, guid: d195d137841c17948a088ae69b96d56d, type: 2}
+  - {fileID: 11400000, guid: 65f83f11121ad7c41b483c400a6ff420, type: 2}
+  - {fileID: 11400000, guid: 84f925fffb9c35645b12614909c350d9, type: 2}
+  - {fileID: 11400000, guid: 0e8f87d15cdc29c40b65fd222381990e, type: 2}
+  - {fileID: 11400000, guid: 7b702a25a75134f4494572be35896f41, type: 2}
+  - {fileID: 11400000, guid: 5f94f3403c3f3794ab3787a937dbc52d, type: 2}
+  - {fileID: 11400000, guid: ff99ad45068e49448b1c497f2ca3ac75, type: 2}
+  - {fileID: 11400000, guid: 83803b72aa2b23b4aa76e4a2cd2f4677, type: 2}
+  - {fileID: 11400000, guid: fc8cd7bdb012fb64ab4b07a0e2110a85, type: 2}
+  - {fileID: 11400000, guid: 8b5500a32af8f6a4e91cc93ba1537438, type: 2}
+  questionTopic: 2
+  questionDifficulty: 1
