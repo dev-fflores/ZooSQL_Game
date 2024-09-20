@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: f84bddc752c683641af4f76c432736e6
   - enabled: 1
-    path: Assets/Scenes/IntroScene.unity
+    path: Assets/Scenes/AlgebraScene.unity
     guid: 0d1387fad0b09c548a248858567eda74
   - enabled: 1
     path: Assets/Scenes/CardsGameScene.unity

@@ -71,6 +71,7 @@ namespace Cartoon
         
         private IEnumerator WritePartialDialogueAnimation()
         {
+            Debug.Log("WritePartialDialogueAnimation");
             IsPartialDialogueFinished = false;
             if (IsDialogueFinished)
             {
