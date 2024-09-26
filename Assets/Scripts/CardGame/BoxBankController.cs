@@ -9,7 +9,21 @@ namespace CardGame
         
         private void Awake()
         {
-            boxElements = GetComponentsInChildren<BoxElement>();
+            boxElements = GetChildElements();
+            UpdateIndexesOfElements();
+        }
+        
+        private BoxElement[] GetChildElements()
+        {
+            return GetComponentsInChildren<BoxElement>();
+        }
+        
+        private void UpdateIndexesOfElements()
+        {
+            for (int i = 0; i < boxElements.Length; i++)
+            {
+                boxElements[i].index = i;
+            }
         }
     }
 }

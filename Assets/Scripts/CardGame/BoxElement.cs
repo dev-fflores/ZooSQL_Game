@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,8 +10,14 @@ namespace CardGame
     [RequireComponent(typeof(RectTransform))]
     public class BoxElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        private Image _image;
         public Transform parentToReturnTo = null;
         public int index;
+
+        private void Awake()
+        {
+            _image = GetComponent<Image>();
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -18,6 +25,7 @@ namespace CardGame
             parentToReturnTo = transform.parent;
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
+            _image.raycastTarget = false;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -30,6 +38,8 @@ namespace CardGame
         {
             Debug.Log($"On End Drag");
             transform.SetParent(parentToReturnTo);
+            transform.SetSiblingIndex(index);
+            _image.raycastTarget = true;
         }
     }
 }
