@@ -362,8 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f9e34fc0298143a8eff34fa9b101e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _correctAnswerSprite: {fileID: 0}
-  _wrongAnswerSprite: {fileID: 0}
+  correctAnswerSprite: {fileID: 21300000, guid: c4fa6abda9d2ce547a3cb4b21e23eda1, type: 3}
+  incorrectAnswerSprite: {fileID: 21300000, guid: cdcbe6f5c9e0a5047af760221679072d, type: 3}
+  questionsAnswered: 
 --- !u!4 &136814448
 Transform:
   m_ObjectHideFlags: 0
@@ -672,7 +673,7 @@ GameObject:
   - component: {fileID: 218392632}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -880,6 +881,7 @@ GameObject:
   - component: {fileID: 267993869}
   - component: {fileID: 267993868}
   - component: {fileID: 267993867}
+  - component: {fileID: 267993870}
   m_Layer: 5
   m_Name: PointBarPanel
   m_TagString: Untagged
@@ -978,6 +980,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267993865}
   m_CullTransparentMesh: 1
+--- !u!114 &267993870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267993865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4018208ac5348314cba806b79aede78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsBar:
+  - {fileID: 1527455800}
+  - {fileID: 1419761408}
+  - {fileID: 638462407}
+  - {fileID: 1370875839}
+  - {fileID: 1517266367}
+  - {fileID: 1782759318}
+  - {fileID: 415408135}
+  - {fileID: 1483931968}
+  - {fileID: 1493204998}
+  - {fileID: 218392630}
+  currentPointIndex: 0
+  pointScale: 1.4
+  pointScaleDuration: 0.4
 --- !u!1 &336115393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1055,7 @@ GameObject:
   - component: {fileID: 415408137}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1102,7 +1130,7 @@ GameObject:
   - component: {fileID: 638462409}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2425,7 +2453,7 @@ GameObject:
   - component: {fileID: 1370875841}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2529,6 +2557,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  pointBarController: {fileID: 0}
 --- !u!4 &1390149293
 Transform:
   m_ObjectHideFlags: 0
@@ -2633,7 +2662,7 @@ GameObject:
   - component: {fileID: 1419761410}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2784,7 +2813,7 @@ GameObject:
   - component: {fileID: 1483931970}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2859,7 +2888,7 @@ GameObject:
   - component: {fileID: 1493205000}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2934,7 +2963,7 @@ GameObject:
   - component: {fileID: 1517266369}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3009,7 +3038,7 @@ GameObject:
   - component: {fileID: 1527455802}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3280,7 +3309,7 @@ GameObject:
   - component: {fileID: 1782759320}
   m_Layer: 5
   m_Name: PointImage
-  m_TagString: Untagged
+  m_TagString: PointAnswer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,8 +11,7 @@ namespace SpinWheel
 {
     public class WheelOfFortune : MonoBehaviour
     {
-        public float spinSpeed = 100f;
-        public int numberOfSegments = 10;
+        
         private SpriteRenderer wheelSpriteRenderer;
         
         [SerializeField] private float[] m_numbersForWheel;
