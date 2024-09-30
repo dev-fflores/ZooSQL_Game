@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cartoon;
@@ -26,7 +27,12 @@ namespace Controllers
         private bool _isDialogueComplete;
         
         [SerializeField] private ConfigData _configData;
-        
+
+        private void Awake()
+        {
+            _canvasGroup = GetComponentInChildren<CanvasGroup>();
+        }
+
         private void Start()
         {
             DOTween.Init();
