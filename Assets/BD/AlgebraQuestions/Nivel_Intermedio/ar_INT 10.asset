@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
+  m_Name: ar_INT 10
+  m_EditorClassIdentifier: 
+  questionImage: {fileID: 21300000, guid: c6fd7b4079ab09e43b1dc8a50216f37a, type: 3}
+  questionText: "Manny quiere ver la informaci\xF3n completa de los animales junto
+    con la informaci\xF3n de sus cuidadores, pero solo donde los animales son mam\xEDferos.
+    \xBFQu\xE9 consulta deber\xEDa usar?"
+  answers:
+  - answerText: "(\u03C3_tipo='Mam\xEDfero' (Animales)) \u2A1D Cuidadores"
+    isCorrect: 1
+  - answerText: "(\u03C3_tipo='Mam\xEDfero' (Animales)) \u2229 Cuidadores"
+    isCorrect: 0
+  - answerText: "(\u03C3_tipo='Mam\xEDfero' (Animales)) \xD7 Cuidadores"
+    isCorrect: 0
+  - answerText: "(\u03C3_tipo='Mam\xEDfero' (Animales)) - Cuidadores"
+    isCorrect: 0
+  questionType: 15

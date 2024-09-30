@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuizGameScene.unity
     guid: 4c20025779f2101409dae04177136f96
+  - enabled: 0
+    path: Assets/Scenes/IntroDmlyDqlScene.unity
+    guid: d0eea902439b9164ea515a2059b99a23
   m_configObjects: {}

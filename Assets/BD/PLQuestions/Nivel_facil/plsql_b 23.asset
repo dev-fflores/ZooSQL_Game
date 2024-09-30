@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
+  m_Name: plsql_b 23
+  m_EditorClassIdentifier: 
+  questionImage: {fileID: 21300000, guid: 129f5176a6466c645a82e5e454b22c43, type: 3}
+  questionText: "\xBFC\xF3mo se declara y utiliza un par\xE1metro IN en un procedimiento
+    PL/SQL?\r\n"
+  answers:
+  - answerText: OUT
+    isCorrect: 0
+  - answerText: 'IN '
+    isCorrect: 1
+  - answerText: INOUT
+    isCorrect: 0
+  - answerText: INPUT
+    isCorrect: 0
+  questionType: 7
