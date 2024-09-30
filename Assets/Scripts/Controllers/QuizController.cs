@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Quiz;
 using TMPro;
@@ -24,11 +25,14 @@ namespace Controllers
         public TextMeshProUGUI[] answerTMPs;
         
         public Button[] answerButtons;
+        
+        public PointBarController pointBarController;
 
         private void Awake()
         {
             _currentQuestionIndex = 0;
             _currentQuestionBankIndex = 0;
+            pointBarController = FindObjectOfType<PointBarController>();
             GetComponentsFromUI();
         }
 
@@ -72,24 +76,29 @@ namespace Controllers
         {
             var answer = button.GetComponentInChildren<TextMeshProUGUI>().text;
             var isCorrect = Array.Find(questionsToShow[_currentQuestionIndex].answers, a => a.answerText == answer).isCorrect;
-            
-            if (isCorrect)
-            {
-                _currentQuestionIndex++;
 
-                if (_currentQuestionIndex >= questionsToShow.Length)
-                {
-                    _currentQuestionBankIndex++;
-                    questionsToShow = GetQuestionFromBank(_algebraQuestions[_currentQuestionBankIndex]);
-                    _currentQuestionIndex = 0;
-                }
-                
-                LoadQuestionInUI(questionsToShow[_currentQuestionIndex]);
-            }
-            else
+            Debug.Log(isCorrect ? "Correct" : "Incorrect");
+
+            _currentQuestionIndex++;
+            pointBarController.AddPoint(isCorrect);
+            Debug.Log($"_currentQuestionIndex: {_currentQuestionIndex}");
+            if (_currentQuestionIndex >= questionsToShow.Length)
             {
-                Debug.Log("Incorrect");
+                _currentQuestionBankIndex++;
+                questionsToShow = GetQuestionFromBank(_algebraQuestions[_currentQuestionBankIndex]);
+                _currentQuestionIndex = 0;
+                StartCoroutine(LoadNextBankQuestion());
+                return;
             }
+            LoadQuestionInUI(questionsToShow[_currentQuestionIndex]);
+        }
+            else
+        
+        private IEnumerator LoadNextBankQuestion()
+        {
+            yield return new WaitForSeconds(pointBarController.pointScaleDuration);
+            pointBarController.ResetPointsBar();
+            LoadQuestionInUI(questionsToShow[_currentQuestionIndex]);
         }
 
         #region Listeners
