@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7175668d4211ee4e89982a0992138a3, type: 3}
+  m_Name: ar_INT 15
+  m_EditorClassIdentifier: 
+  questionImage: {fileID: 21300000, guid: 2a33ecb2f99816041879555edb74e479, type: 3}
+  questionText: "Manny quiere ver la informaci\xF3n completa de los animales junto
+    con la informaci\xF3n de sus cuidadores, pero solo para aquellos cuidadores que
+    tienen m\xE1s de 10 a\xF1os de experiencia. \xBFQu\xE9 consulta deber\xEDa usar?"
+  answers:
+  - answerText: " Animales \u2A1D (\u03C3_experiencia>10 (Cuidadores))"
+    isCorrect: 1
+  - answerText: "Animales \u2229 (\u03C3_experiencia>10 (Cuidadores))"
+    isCorrect: 0
+  - answerText: "Animales \xD7 (\u03C3_experiencia>10 (Cuidadores))"
+    isCorrect: 0
+  - answerText: "Animales - (\u03C3_experiencia>10 (Cuidadores))"
+    isCorrect: 0
+  questionType: 17
