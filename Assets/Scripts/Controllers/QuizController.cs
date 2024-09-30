@@ -92,7 +92,7 @@ namespace Controllers
             }
             LoadQuestionInUI(questionsToShow[_currentQuestionIndex]);
         }
-            else
+           
         
         private IEnumerator LoadNextBankQuestion()
         {
