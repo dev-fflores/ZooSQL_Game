@@ -21,7 +21,9 @@ namespace Controllers
         [SerializeField] private AnimationInType _animationInType;
         [SerializeField] private AnimationOutType _animationOutType;
         [SerializeField] private float _animationDuration;
+        
         private bool _isInTransition;
+        private bool _isDialogueComplete;
         
         [SerializeField] private ConfigData _configData;
         
@@ -29,6 +31,7 @@ namespace Controllers
         {
             DOTween.Init();
             _isInTransition = true;
+            _isDialogueComplete = false;
             _configData = DataManager.Instance.LoadConfigData();
             SetupCartoonPages();
             _currentPageIndex = 0;
@@ -101,11 +104,11 @@ namespace Controllers
             
             var currentPage = GetCurrentCartoonPage();
 
-            if (!currentPage.IsPartialDialogueFinished && !currentPage.IsDialogueFinished)
-            {
-                currentPage.CompleteWritePartialDialogue();
-                return;
-            }
+            // if (!currentPage.IsPartialDialogueFinished && !currentPage.IsDialogueFinished)
+            // {
+            //     currentPage.CompleteWritePartialDialogue();
+            //     return;
+            // }
             
             if (currentPage.IsDialogueFinished)
             {
@@ -146,7 +149,21 @@ namespace Controllers
                 });
                 sequence.Play();
             }
-            currentPage.WritePartialDialogueWithAnimation();
+            currentPage.CompleteWriteDialogue();
+            
+            // TODO: Agregar la animacion de escribir el dialogo en cada dialogo parcial
+
+            // if (!_isDialogueComplete)
+            // {
+            //     currentPage.CompleteWriteDialogue();
+            //     _isDialogueComplete = true;
+            // }
+            // else
+            // {
+            //     currentPage.WriteDialogueWithAnimation();
+            //     _isDialogueComplete = false;
+            // }
+            
         }
         
         public CartoonPage GetCurrentCartoonPage()

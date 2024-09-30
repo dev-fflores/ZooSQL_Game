@@ -1584,7 +1584,7 @@ MonoBehaviour:
   - {fileID: 1086784001}
   - {fileID: 1882345611}
   - {fileID: 1892014228}
-  _canvasGroup: {fileID: 0}
+  _canvasGroup: {fileID: 1722159080}
   _currentPageIndex: 0
   _currentPage: {fileID: 0}
   _animationInType: 0

@@ -35,10 +35,10 @@ namespace Cartoon
             _dialogueText.text = string.Empty;
             currentDialogueText = string.Empty;
             
-            WritePartialDialogueWithAnimation();
+            WriteDialogueWithAnimation();
         }
 
-        public void CompleteWritePartialDialogue()
+        public void CompleteWriteDialogue()
         {
             if (IsDialogueFinished)
             {
@@ -48,13 +48,13 @@ namespace Cartoon
             StopAllCoroutines();
             Debug.Log("StopAllCoroutines");
             
-            if (CurrentDialogueIndex > 0)
-            {
-                currentDialogueText += "\n";
-                Debug.Log("Salto de linea " + currentDialogueText);
-            }
-            currentDialogueText += _dialogues[CurrentDialogueIndex];
-            _dialogueText.text = currentDialogueText;
+            // if (CurrentDialogueIndex > 0)
+            // {
+            //     currentDialogueText += "\n";
+            //     Debug.Log("Salto de linea " + currentDialogueText);
+            // }
+            // currentDialogueText += _dialogues[CurrentDialogueIndex];
+            _dialogueText.text = _dialogues[CurrentDialogueIndex];
             CurrentDialogueIndex++;
             IsPartialDialogueFinished = true;
 
@@ -64,24 +64,19 @@ namespace Cartoon
             }
         }
         
-        public void WritePartialDialogueWithAnimation()
+        public void WriteDialogueWithAnimation()
         {
-            StartCoroutine(WritePartialDialogueAnimation());
+            StartCoroutine(WriteDialogueAnimation());
         }
         
-        private IEnumerator WritePartialDialogueAnimation()
+        private IEnumerator WriteDialogueAnimation()
         {
-            Debug.Log("WritePartialDialogueAnimation");
-            IsPartialDialogueFinished = false;
             if (IsDialogueFinished)
             {
                 yield break;
             }
             
-            if (CurrentDialogueIndex > 0)
-            {
-                _dialogueText.text += "\n";
-            }
+            _dialogueText.text = string.Empty;
             
             foreach (var letter in _dialogues[CurrentDialogueIndex])
             {
@@ -95,6 +90,31 @@ namespace Cartoon
             {
                 IsDialogueFinished = true;
             }
+            
+            // Debug.Log("WriteDialogueAnimation");
+            // IsPartialDialogueFinished = false;
+            // if (IsDialogueFinished)
+            // {
+            //     yield break;
+            // }
+            //
+            // if (CurrentDialogueIndex > 0)
+            // {
+            //     _dialogueText.text += "\n";
+            // }
+            //
+            // foreach (var letter in _dialogues[CurrentDialogueIndex])
+            // {
+            //     _dialogueText.text += letter;
+            //     yield return new WaitForSeconds(_dialogueSpeed);
+            // }
+            // CurrentDialogueIndex++;
+            // IsPartialDialogueFinished = true;
+            //
+            // if (CurrentDialogueIndex >= _dialogues.Count)
+            // {
+            //     IsDialogueFinished = true;
+            // }
         }
 
         // public void StartWriteDialogueWithAnimation(string dialogue)
