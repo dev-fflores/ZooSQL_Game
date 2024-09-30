@@ -6,6 +6,7 @@ namespace CardGame
     public class BoxBankController : MonoBehaviour
     {
         public BoxElement[] boxElements;
+        public GameObject prefabBoxElement;
         
         private void Awake()
         {
